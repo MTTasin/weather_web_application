@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="{% static 'css/dist/styles.css' %}">
+
+</head>
+
+<body class="bg-gray-500 font-serif leading-normal tracking-normal">
+    <!-- search bar for city -->
+    <div class="container mx-auto">
+        <div class="flex justify-center">
+            <div class="w-1/2">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <div class="flex items-center border-b border-teal-500 py-2">
+                        <input list="cities"
+                            class="bg-white bg-opacity-10 border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight"
+                            name="city" id="city" placeholder="Search..." required>
+                        <datalist id="cities">
+                            {% for i in cities %}
+                            <option value="{{ i.field1 }}"></option>
+                            {% endfor %}
+                        </datalist>
+                        <input
+                            class="flex-shrink-0 bg-blue-500 hover:bg-blue-700 border-blue-500 hover:border-blue-700 text-sm border-4 text-white py-1 px-2 rounded"
+                            type="submit" value="Search">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- component -->
+    <div class="w-full mt-1 justify-center container mx-auto">
+        <div class="ml-auto w-full lg:w-2/3 justify-center">
+            {% if weather.icon == '01d' %}
+            <div class="w-full lg:w-1/2 flex rounded-lg bg-auto" style="background-image: url('https://images.unsplash.com/photo-1559963110-71b394e7494d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=675&q=80')">
+            {% elif weather.icon == '01n' %}
+            <div class="w-full lg:w-1/2 flex rounded-lg bg-auto" style="background-image: url('https://images.pexels.com/photos/323314/pexels-photo-323314.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')">
+            {% elif weather.icon == '02d' %}
+            <div class="w-full lg:w-1/2 flex rounded-lg bg-auto" style="background-image: url('https://images.pexels.com/photos/5341778/pexels-photo-5341778.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')">
+            {% elif weather.icon == '02n' %}
+            <div class="w-full lg:w-1/2 flex rounded-lg bg-auto" style="background-image: url('https://images.pexels.com/photos/239107/pexels-photo-239107.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')">
+            {% elif weather.icon == '03d' %}
+            <div class="w-full lg:w-1/2 flex rounded-lg bg-auto" style="background-image: url('https://images.pexels.com/photos/158163/clouds-cloudporn-weather-lookup-158163.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')">
+            {% elif weather.icon == '03n' %}
+            <div class="w-full lg:w-1/2 flex rounded-lg bg-auto" style="background-image: url('https://images.pexels.com/photos/158163/clouds-cloudporn-weather-lookup-158163.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')">
+            {% elif weather.icon == '04d' %}
+            <div class="w-full lg:w-1/2 flex rounded-lg bg-auto" style="background-image: url('https://images.pexels.com/photos/19670/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')">
+            {% elif weather.icon == '04n' %}
+            <div class="w-full lg:w-1/2 flex rounded-lg bg-auto" style="background-image: url('https://images.pexels.com/photos/2885320/pexels-photo-2885320.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')">
+            {% elif weather.icon == '09d' %}
+            <div class="w-full lg:w-1/2 flex rounded-lg bg-auto" style="background-image: url('https://images.pexels.com/photos/459451/pexels-photo-459451.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')">
+            {% elif weather.icon == '09n' %}
+            <div class="w-full lg:w-1/2 flex rounded-lg bg-auto" style="background-image: url('https://images.pexels.com/photos/459451/pexels-photo-459451.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')">
+            {% elif weather.icon == '10d' %}
+            <div class="w-full lg:w-1/2 flex rounded-lg bg-auto" style="background-image: url('https://images.pexels.com/photos/12041470/pexels-photo-12041470.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')">
+            {% elif weather.icon == '10n' %}
+            <div class="w-full lg:w-1/2 flex rounded-lg bg-auto" style="background-image: url('https://images.pexels.com/photos/761680/pexels-photo-761680.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')">
+            {% elif weather.icon == '11d' %}
+            <div class="w-full lg:w-1/2 flex rounded-lg bg-auto" style="background-image: url('https://images.pexels.com/photos/2418664/pexels-photo-2418664.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')">
+            {% elif weather.icon == '11n' %}
+            <div class="w-full lg:w-1/2 flex rounded-lg bg-auto" style="background-image: url('https://images.pexels.com/photos/2418664/pexels-photo-2418664.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')">
+            {% elif weather.icon == '13d' %}
+            <div class="w-full lg:w-1/2 flex rounded-lg bg-auto" style="background-image: url('https://images.pexels.com/photos/20273437/pexels-photo-20273437/free-photo-of-view-of-a-house-in-mountains-in-winter.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')">
+            {% elif weather.icon == '13n' %}
+            <div class="w-full lg:w-1/2 flex rounded-lg bg-auto" style="background-image: url('https://images.pexels.com/photos/14818693/pexels-photo-14818693.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')">
+            {% elif weather.icon == '50d' %}
+            <div class="w-full lg:w-1/2 flex rounded-lg bg-auto" style="background-image: url('https://images.pexels.com/photos/1287075/pexels-photo-1287075.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')">
+            {% elif weather.icon == '50n' %}
+            <div class="w-full lg:w-1/2 flex rounded-lg bg-auto" style="background-image: url('https://images.pexels.com/photos/1287075/pexels-photo-1287075.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')">
+            {% endif %}
+                <div class="rounded-lg py-6 pl-8 pr-32 w-full bg-blue-400 opacity-75 text-white">
+                    <div class="mb-20">
+                        <h2 class="font-bold text-3xl leading-none pb-1">{{ weather.date|date:"l" }}</h2>
+                        <h3 class="leading-none pb-2 pl-1">{{ weather.date }}</h3>
+                        <p class="flex aling-center opacity-75"><svg class=" w-4 inline mr-1"
+                                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 425.963 425.963"
+                                style="enable-background:new 0 0 425.963 425.963;" xml:space="preserve" class="">
+                                <g>
+                                    <g>
+                                        <path
+                                            d="M213.285,0h-0.608C139.114,0,79.268,59.826,79.268,133.361c0,48.202,21.952,111.817,65.246,189.081   c32.098,57.281,64.646,101.152,64.972,101.588c0.906,1.217,2.334,1.934,3.847,1.934c0.043,0,0.087,0,0.13-0.002   c1.561-0.043,3.002-0.842,3.868-2.143c0.321-0.486,32.637-49.287,64.517-108.976c43.03-80.563,64.848-141.624,64.848-181.482   C346.693,59.825,286.846,0,213.285,0z M274.865,136.62c0,34.124-27.761,61.884-61.885,61.884   c-34.123,0-61.884-27.761-61.884-61.884s27.761-61.884,61.884-61.884C247.104,74.736,274.865,102.497,274.865,136.62z"
+                                            data-original="#000000" class="active-path" data-old_color="#000000"
+                                            fill="#FFFFFF" />
+                            </svg>
+                            <span style="text-transform: uppercase;">{{ weather.city }}</span>
+                        </p>
+                    </div>
+                    <div>
+                        <div>
+                            {% if weather.icon == '01d' %}
+                            <img src="{% static 'weather_icons/wi-day-sunny.png' %}" class="w-10 h-10" alt="Sunny">
+                            {% elif weather.icon == '01n' %}
+                            <img src="{% static 'weather_icons/wi-night-clear.png' %}" class="w-10 h-10" alt="Sunny">
+                            {% elif weather.icon == '02d' %}
+                            <img src="{% static 'weather_icons/wi-day-cloudy.png' %}" class="w-10 h-10" alt="Cloudy">
+                            {% elif weather.icon == '02n' %}
+                            <img src="{% static 'weather_icons/wi-night-cloudy.png' %}" class="w-10 h-10" alt="Cloudy">
+                            {% elif weather.icon == '03d' %}
+                            <img src="{% static 'weather_icons/wi-cloud.png' %}" class="w-10 h-10" alt="Cloudy">
+                            {% elif weather.icon == '03n' %}
+                            <img src="{% static 'weather_icons/wi-cloud.png' %}" class="w-10 h-10" alt="Cloudy">
+                            {% elif weather.icon == '04d' %}
+                            <img src="{% static 'weather_icons/wi-cloudy.png' %}" class="w-10 h-10" alt="Cloudy">
+                            {% elif weather.icon == '04n' %}
+                            <img src="{% static 'weather_icons/wi-cloudy.png' %}" class="w-10 h-10" alt="Cloudy">
+                            {% elif weather.icon == '09d' %}
+                            <img src="{% static 'weather_icons/wi-showers.png' %}" class="w-10 h-10" alt="Cloudy">
+                            {% elif weather.icon == '09n' %}
+                            <img src="{% static 'weather_icons/wi-showers.png' %}" class="w-10 h-10" alt="Cloudy">
+                            {% elif weather.icon == '10d' %}
+                            <img src="{% static 'weather_icons/wi-day-rain.png' %}" class="w-10 h-10" alt="Cloudy">
+                            {% elif weather.icon == '10n' %}
+                            <img src="{% static 'weather_icons/wi-night-rain.png' %}" class="w-10 h-10" alt="Cloudy">
+                            {% elif weather.icon == '11d' %}
+                            <img src="{% static 'weather_icons/wi-thunderstorm.png' %}" class="w-10 h-10" alt="Cloudy">
+                            {% elif weather.icon == '11n' %}
+                            <img src="{% static 'weather_icons/wi-thunderstorm.png' %}" class="w-10 h-10" alt="Cloudy">
+                            {% elif weather.icon == '13d' %}
+                            <img src="{% static 'weather_icons/wi-snow.png' %}" class="w-10 h-10" alt="Cloudy">
+                            {% elif weather.icon == '13n' %}
+                            <img src="{% static 'weather_icons/wi-snow.png' %}" class="w-10 h-10" alt="Cloudy">
+                            {% elif weather.icon == '50d' %}
+                            <img src="{% static 'weather_icons/wi-fog.png' %}" class="w-10 h-10" alt="Cloudy">
+                            {% elif weather.icon == '50n' %}
+                            <img src="{% static 'weather_icons/wi-fog.png' %}" class="w-10 h-10" alt="Cloudy">
+                            {% endif %}
+                        </div>
+                        <strong class="leading-none text-6xl block font-weight-bolder">{{ weather.temperature | truncatechars:6 }} °C</strong>
+                        <b class="text-2xl block font-bold mt-5">{{ weather.description }}</b>
+                    </div>
+                    <div class="w-full lg:w-full md:w-full ">
+                        <div class="flex justify-between mt-4 w-64 mb-4">
+                            <div class="w-auto font-bold uppercase text-90">Highest temperature</div>
+                            <div class="w-auto text-right">{{ weather.high | truncatechars:6 }} °C</div>
+                        </div>
+                        <div class="flex justify-between w-64 mb-4">
+                            <div class="w-auto font-bold uppercase text-90">Lowest temperature</div>
+                            <div class="w-auto text-right">{{ weather.low | truncatechars:6 }} °C</div> </div>
+                        </div>
+                        <div class="flex justify-between w-64 mb-4">
+                            <div class="w-auto font-bold uppercase text-90">Precipitation</div>
+                            <div class="w-auto text-right">{{ weather.percipitation }} mm</div>
+                        </div>
+                        <div class="flex justify-between w-64 mb-4">
+                            <div class="w-auto font-bold uppercase text-90">Humidity</div>
+                            <div class="w-auto text-right">{{ weather.humidity }} %</div>
+                        </div>
+                        <div class="flex justify-between w-64 mb-4">
+                            <div class="w-auto font-bold uppercase text-90">Wind</div>
+                            <div class="w-auto text-right">{{ weather.wind }} km/h</div>
+                        </div>
+                        <div class="flex justify-between w-64 mb-8">
+                            <div class="w-auto font-bold uppercase text-90">Feels like</div>
+                            <div class="w-auto text-right">{{ weather.feels_like | truncatechars:6 }} °C</div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+
+        
+        </div>
+    </div>
+</body>
+
+</html>
